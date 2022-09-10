@@ -1,0 +1,43 @@
+.form-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  .form {
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    &__label {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      color: #ffffff;
+      margin-top: 12px;
+    }
+    &__field {
+      left: 0%;
+      right: 0%;
+      top: 0%;
+      bottom: 0%;
+      background: #ffffff;
+      border: 1px solid #828282;
+      border-radius: 100px;
+      height: 30px;
+      padding-left: 8px;
+      margin-top: 4px;
+    }
+    &__error {
+      color: #e86060;
+    }
+    &__button {
+      background: #e86060;
+      mix-blend-mode: normal;
+      border-radius: 100px;
+      height: 30px;
+      margin-top: 12px;
+    }
+  }
+}
