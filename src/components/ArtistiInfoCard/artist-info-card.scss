@@ -1,0 +1,73 @@
+.info-card {
+  max-width: 890px;
+  max-height: 250px;
+  display: flex;
+  &__imagen-container {
+    width: 250px;
+    height: 250px;
+    background-color: red;
+    img {
+      width: 100%;
+    }
+  }
+  &__info-container {
+    max-width: 640px;
+    padding: 40px 32px;
+    background: #c38989;
+    flex-direction: column;
+    &__artist {
+    }
+    &__followers {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      color: white;
+      margin-bottom: 20px;
+      span {
+        font-family: "Quicksand";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 12px;
+        /* identical to box height */
+
+        color: #662323;
+      }
+    }
+    &__artist-biography {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 20px;
+
+      color: #ffffff;
+    }
+    &__buttons {
+      display: flex;
+      gap: 20px;
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #ffffff;
+      mix-blend-mode: normal;
+      bottom: 0px;
+      margin-top: 40px;
+      button {
+        padding: 6px 22px;
+        cursor: pointer;
+        background: #e86060;
+        mix-blend-mode: normal;
+        border-radius: 100px;
+        border: none;
+      }
+    }
+  }
+}
