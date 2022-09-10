@@ -1,0 +1,55 @@
+html {
+  font-family: "Quicksand", sans-serif;
+}
+* {
+  font-family: "Quicksand", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.dark-red-secondary {
+  color: #662323;
+}
+.red-principal {
+  color: #e86060;
+}
+ul {
+  padding: 0;
+}
+
+li {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  list-style: none;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+li:hover {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #e86060;
+}
+
+.list-title {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  color: #fff;
+}
+.headline {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  color: #fff;
+}
