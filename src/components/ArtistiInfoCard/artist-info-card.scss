@@ -2,10 +2,11 @@
   max-width: 890px;
   max-height: 250px;
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
   &__imagen-container {
     width: 250px;
     height: 250px;
-    background-color: red;
     img {
       width: 100%;
     }

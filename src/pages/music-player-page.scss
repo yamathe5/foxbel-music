@@ -20,6 +20,17 @@
           padding-left: 16px;
         }
       }
+      &__session-buttons {
+        display: flex;
+        gap: 8px;
+        button {
+          background: #e86060;
+          mix-blend-mode: normal;
+          border-radius: 100px;
+          height: 30px;
+          width: 88px;
+        }
+      }
     }
     &__songs {
       margin-top: 40px;

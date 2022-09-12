@@ -1,7 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import "./signin-page.scss";
+import { useAuth } from "../context/auth-context";
 
 const loginSchema = Yup.object().shape({
   password: Yup.string()
@@ -14,15 +16,15 @@ const loginSchema = Yup.object().shape({
 });
 
 export default function SignInPage() {
+  const { signin } = useAuth();
+
   const handleSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+    console.log(values);
+    signin(values);
   };
 
   return (
-    <div className="sign-in-page">
+    <div className="form-page">
       <h1>Sign in</h1>
       <Formik
         initialValues={{
@@ -94,6 +96,9 @@ export default function SignInPage() {
           );
         }}
       </Formik>
+      <Link to="/login">
+        <button className="button">Log in</button>
+      </Link>
     </div>
   );
 }

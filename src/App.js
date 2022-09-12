@@ -1,12 +1,18 @@
 import "./styles/index.scss";
-import MusicPlayerPage from "./pages/MusicPlayerPage";
-import SignInPage from "./pages/SignInPage";
-import LoginPage from "./pages/LogInPage";
+import UnauthenticatedPage from "./UnauthenticatedPage";
+import AuthenticatedPage from "./AuthenticatedPage";
+import { useAuth } from "./context/auth-context";
 
 function App() {
+  // let user = null;
+  const { user } = useAuth();
   return (
     <div className="App" style={{ width: "100vw", height: "100vh" }}>
-      <LoginPage></LoginPage>
+      {user ? (
+        <AuthenticatedPage></AuthenticatedPage>
+      ) : (
+        <UnauthenticatedPage></UnauthenticatedPage>
+      )}
     </div>
   );
 }

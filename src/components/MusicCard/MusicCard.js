@@ -1,9 +1,14 @@
 import React from "react";
 import "./music-card.scss";
 
-export default function MusicCard({ coverImg, artist, song }) {
+export default function MusicCard({
+  coverImg,
+  artist,
+  song,
+  handlehowMusicPlayButtons,
+}) {
   return (
-    <div className="song-card">
+    <div onClick={handlehowMusicPlayButtons} className="song-card">
       <div className="song-card__imagen-container">
         <img src={coverImg} alt="album imagen"></img>
       </div>

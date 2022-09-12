@@ -1,7 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/auth-context";
 import * as Yup from "yup";
-// import "./log-in-page.scss";
+import "./signin-page.scss";
 
 const loginSchema = Yup.object().shape({
   password: Yup.string()
@@ -9,16 +11,12 @@ const loginSchema = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Required"),
   email: Yup.string().email("Invalid email").required("Required"),
-  name: Yup.string().required("Required"),
-  lastname: Yup.string().required("Required"),
 });
 
 export default function LoginPage() {
+  const { login } = useAuth();
   const handleSubmit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+    login(values);
   };
 
   return (
@@ -61,6 +59,9 @@ export default function LoginPage() {
           );
         }}
       </Formik>
+      <Link to="/sign-in">
+        <button className="button">Sign in</button>
+      </Link>
     </div>
   );
 }

@@ -16,7 +16,11 @@ html {
 ul {
   padding: 0;
 }
-
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
 li {
   font-family: "Quicksand";
   font-style: normal;
