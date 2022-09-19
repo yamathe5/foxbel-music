@@ -1,8 +1,17 @@
+@use "../../styles/breakpoints" as u;
+
 .sidebar {
-  max-width: 330px;
-  background-color: #662323;
-  padding: 50px 40px;
-  height: 100%;
+  display: none;
+  width: 100%;
+  @include u.breakpoint(large) {
+    min-height: 100vh;
+    display: block;
+    width: 100%;
+    max-width: 330px;
+    background-color: #662323;
+    padding: 50px 40px;
+    height: 100%;
+  }
   h2 {
     margin-top: 30px;
     margin-bottom: 4px;

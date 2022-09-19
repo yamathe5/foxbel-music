@@ -1,7 +1,13 @@
 import React from "react";
 import "./artist-info-card.scss";
 
-export default function ArtistInfoCard({ coverImg, artist, album, about }) {
+export default function ArtistInfoCard({
+  coverImg,
+  artist,
+  album,
+  id,
+  handlehowMusicPlayButtons,
+}) {
   return (
     <div className="info-card">
       <div className="info-card__imagen-container">
@@ -20,7 +26,9 @@ export default function ArtistInfoCard({ coverImg, artist, album, about }) {
           propelled them from the vanguard of electronic dance music.
         </p>
         <div className="info-card__info-container__buttons">
-          <button>Reproducir</button>
+          <button onClick={() => handlehowMusicPlayButtons(id)}>
+            Reproducir
+          </button>
           <button>Seguir</button>
           <button>...</button>
         </div>

@@ -7,7 +7,7 @@ function App() {
   // let user = null;
   const { user } = useAuth();
   return (
-    <div className="App" style={{ width: "100vw", height: "100vh" }}>
+    <div className="App">
       {user ? (
         <AuthenticatedPage></AuthenticatedPage>
       ) : (

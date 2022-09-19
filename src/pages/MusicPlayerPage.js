@@ -4,36 +4,44 @@ import ArtistInfoCard from "../components/ArtistiInfoCard/ArtistInfoCard";
 import MusicCard from "../components/MusicCard/MusicCard";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
-import "./music-player-page.scss";
+import playerContext from "../context/playerContext";
 import PlayMusicButtons from "../components/PlayMusicButtons/PlayMusicButtons";
+import { FetchAllAlbumsData } from "../services/api-fetch";
+import "./music-player-page.scss";
 
 export default function MusicPlayerPage() {
   const [inputValue, setInputValue] = React.useState("");
-  const [albums, setAlbums] = React.useState([]);
   const [showMusicPlayButtons, setShowMusicPlayButtons] = React.useState(false);
-
+  const { SetCurrent, currentSong, songslist, songsSet } =
+    React.useContext(playerContext);
   const { user } = useAuth();
 
   React.useEffect(() => {
-    fetch("http://localhost:4000/api/albums").then((data) =>
-      data.json().then((data) => {
-        setAlbums(data.body);
-      })
-    );
+    FetchAllAlbumsData().then((data) => {
+      songsSet(data);
+    });
   }, []);
-
-  function handlehowMusicPlayButtons(e) {
-    e.stopPropagation();
-
-    console.log("Hola", e.target);
-    setShowMusicPlayButtons((prev) => !prev);
+  function handlehowMusicPlayButtons(id) {
+    SetCurrent(id);
+    setShowMusicPlayButtons((prev) => (prev === false ? true : true));
   }
 
   function handleChange(e) {
+    console.log(e.target.value);
     setInputValue(e.target.value);
   }
   function handleSubmit(e) {
     e.preventDefault();
+    console.log("submited");
+    if (inputValue.length === 0) {
+      FetchAllAlbumsData().then((data) => {
+        songsSet(data);
+      });
+    }
+    let matchedSongs = songslist.filter((song) => {
+      return song.title.toLowerCase().includes(inputValue.toLowerCase());
+    });
+    songsSet(matchedSongs);
   }
 
   function renderButtons() {
@@ -58,24 +66,27 @@ export default function MusicPlayerPage() {
               value={inputValue}
               onChange={handleChange}
               type="text"
-            ></input>
+              placeholder="Buscar"
+            />
           </form>
           <div className="music-player-player__app__header__session-buttons">
             {user ? (
               <Link to="/account">
-                <button>{user.name}</button>
+                <button>{user.name || "Account"}</button>
               </Link>
             ) : (
               renderButtons()
             )}
           </div>
         </div>
-        {albums[3] ? (
+        {songslist[3] ? (
           <ArtistInfoCard
-            coverImg={albums[3].cover}
-            artist={albums[3].artist.name}
-            album={albums[3].title}
-            about={albums[3].artist}
+            coverImg={songslist[3].album.cover}
+            artist={songslist[3].artist.name}
+            album={songslist[3].album.title}
+            about={songslist[3].artist.name}
+            id={3}
+            handlehowMusicPlayButtons={handlehowMusicPlayButtons}
           ></ArtistInfoCard>
         ) : (
           ""
@@ -84,14 +95,15 @@ export default function MusicPlayerPage() {
         <div className="music-player-player__app__songs">
           <h2 className="headline ">Resultados</h2>
           <div className="music-player-player__app__songs__container">
-            {albums.map((data, index) => {
+            {songslist.map((song, index) => {
               return (
                 <MusicCard
+                  id={index}
                   handlehowMusicPlayButtons={handlehowMusicPlayButtons}
                   key={index}
-                  coverImg={data.cover}
-                  artist={data.artist.name}
-                  song={data.tracks.data[0].title}
+                  coverImg={song.album.cover}
+                  artist={song.artist.name}
+                  song={song.title}
                 />
               );
             })}
@@ -100,7 +112,16 @@ export default function MusicPlayerPage() {
       </div>
       {user ? (
         <PlayMusicButtons
+          song={currentSong != null ? songslist[currentSong].preview : ""}
           showMusicPlayButtons={showMusicPlayButtons}
+          albumCover={
+            currentSong != null ? songslist[currentSong].album.cover : ""
+          }
+          songName={currentSong != null ? songslist[currentSong].title : ""}
+          artist={currentSong != null ? songslist[currentSong].artist.name : ""}
+          albumName={
+            currentSong != null ? songslist[currentSong].album.title : ""
+          }
         ></PlayMusicButtons>
       ) : null}
     </div>

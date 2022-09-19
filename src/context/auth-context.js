@@ -8,7 +8,7 @@ const FoxbelMusic = "FoxbelMusic";
 
 function AuthProvider({ children }) {
   const [user, setUser] = React.useState(
-    JSON.parse(sessionStorage.getItem(FoxbelMusic)) || null
+    JSON.parse(sessionStorage.getItem(FoxbelMusic)) || "Usuario fake"
   );
   const navigate = useNavigate();
 
