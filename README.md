@@ -1,3 +1,30 @@
+## Se creo un backend que consume la API
+Debido a que los Cors no me permitia acceder a la API desde el front-end, entonces cree un backend que consume la API de dezer.
+
+## Funciones de la app
+
+- Al dar click a una cacion esta se reproducira y tendras las opciones de pausar la cancion, reproducir la siguiente cancion, reproducir la cancion anterior o subir y bajar el volumen
+- En la barra de busqueda se peude buscar las canciones 
+- Hay un login previo que fue desabilitado para enfocarnos en la funcionaldad de la app
+
+## Pasos para inciar la app
+
+- Descargar el repositorio
+- Entrar desde la terminal a cada proyecto (Front y backend) y escribir el comando “npm
+install”
+- En la carpeta dezer-api(Back-end) abrir la terminar y correr el comando “npm run dev”
+y buscar en la web http://localhost:4000/api/songs
+- Entrar a la carpeta foxbel-music (Front-end), correr el comando ”npm start” y buscar
+en la web http://localhost:3000/
+- Repositorio Front-end: https://github.com/yamathe5/foxbel-music
+- Repositorio Back-end: https://github.com/yamathe5/dezer-api
+
+## Herramientas utilizadas
+- Formik: Se uso para realziar los formularios
+- Yup: Se utilizo par validar los formularios de los login y sign in
+- Sass: Se utilizo como framework de estilos
+- Node y express: Se utilizo para consumir la API
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
